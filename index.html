@@ -1,84 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Diya Lonial — Portfolio</title>
-  <meta name="description" content="Diya Lonial — SDE @ Citi. Spring Boot microservices, ML systems, clean UIs." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diya Lonial</title>
+  <meta name="description" content="Diya Lonial — SDE @ Citi. ML systems, distributed systems, clean product execution.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header class="nav">
-    <a href="#top" class="brand">Diya Lonial</a>
-    <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-      <button id="themeToggle" aria-label="Toggle theme">◐</button>
-    </nav>
-  </header>
-
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero container">
-      <div class="hero__text">
-        <h1>Hi, I'm Diya <span class="wave">👋</span></h1>
-        <p class="lead">
-          I build Spring Boot microservices, ML-flavored side projects, and clean UIs.
-          Currently an SDE at <strong>Citi</strong>. Interested in <strong>ML systems</strong>, 
-          <strong>distributed systems</strong>, and performance.
-        </p>
+  <header class="hero" id="top">
+    <div class="hero__inner">
+      <nav class="hero__nav">
+        <a class="logo" href="#top">Diya Lonial</a>
         <div class="hero__links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="mailto:diyalonial@gmail.com">Email</a>
+        </div>
+      </nav>
+      <div class="hero__content">
+        <ul class="chips">
+          <li>citi</li>
+          <li>ml systems</li>
+          <li>distributed systems</li>
+          <li>clean ux</li>
+        </ul>
+        <h1>Hi, I'm Diya <span class="wave" aria-hidden="true">👋</span></h1>
+        <p class="tagline">
+          I build Spring Boot microservices, ML-flavored automation, and product polish that people feel.
+          Currently an SDE at <strong>Citi</strong> focused on reliability and compliance platforms.
+        </p>
+        <div class="cta">
           <a class="btn" href="#projects">View projects</a>
-          <a class="btn btn--ghost" href="mailto:dlonial@proton.me">Contact</a>
+          <a class="btn btn--ghost" href="mailto:diyalonial@gmail.com">Let's talk</a>
         </div>
       </div>
-      <!-- no headshot: minimal hero with name and intro -->
-    </section>
+    </div>
+  </header>
 
-    <!-- Projects -->
-    <section id="projects" class="container section">
+  <main class="shell">
+    <section id="projects" class="section">
       <div class="section__head">
         <h2>Projects</h2>
-        <p class="muted">A few things I’ve shipped or tinkered with recently.</p>
+        <p>Things I've shipped or tinkered with recently.</p>
       </div>
-      <div id="projectsGrid" class="grid"></div>
+      <div id="projectsGrid" class="projects"></div>
     </section>
 
-    <!-- Photos removed (kept minimal) -->
-
-    <!-- About -->
-    <section id="about" class="container section">
-      <div class="card about">
-        <h3>About me</h3>
+    <section id="about" class="section">
+      <div class="section__head">
+        <h2>About</h2>
+      </div>
+      <div class="about">
         <p>
-          I’m a builder who likes owning problems end-to-end—from backend systems and reliability
-          to the small UX details people feel. At Citi I work on Spring Boot microservices, API security,
-          and data integrations for compliance/risk. Side-quests include a crypto trading bot,
-          a Spotify playlist generator for runners, and a bunch of “try it and learn” experiments.
+          I like owning problems end-to-end—from backend systems and data contracts to the tiny UX details that make
+          a product feel trustworthy. At Citi I ship Spring Boot microservices, API security, and integration workflows
+          for compliance and risk teams.
         </p>
-        <ul class="bullets">
-          <li><b>Stack:</b> Java/Spring Boot, Python, C++, React, Node</li>
-          <li><b>Focus:</b> ML systems, distributed systems, performance</li>
-          <li><b>Fun:</b> travel, film/digital photography, Spanish cinema</li>
+        <p>
+          Side quests: a crypto trading bot that steers via SMA/RSI signals, a Spotify playlist generator for runners,
+          and whatever forces me to learn a new system.
+        </p>
+        <ul class="about__list">
+          <li><strong>Stack:</strong> Java/Spring, Python, C++, React, Node</li>
+          <li><strong>Focus:</strong> ML systems, distributed systems, performance</li>
+          <li><strong>Fun:</strong> travel, film/digital photography, Spanish cinema</li>
         </ul>
       </div>
     </section>
   </main>
 
-  <footer class="footer container">
+  <footer class="footer">
     <span>© <span id="year"></span> Diya Lonial</span>
     <span>SDE @ Citi • ML & Systems</span>
   </footer>
 
   <template id="projectCard">
-    <article class="card project">
-      <img class="project__img" alt="">
+    <article class="project">
+      <div class="project__media">
+        <img class="project__img" alt="">
+      </div>
       <div class="project__body">
         <h3 class="project__title"></h3>
         <p class="project__desc"></p>
-        <div class="chips"></div>
+        <ul class="chips project__tech"></ul>
         <div class="project__links"></div>
       </div>
     </article>

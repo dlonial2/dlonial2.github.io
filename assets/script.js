@@ -1,72 +1,60 @@
-// ---- data you edit ----
+// ---- Edit your project data here ----
 const PROJECTS = [
   {
     title: "Crypto Trading Bot",
-    desc: "Python trading bot with SMA/RSI logic, live Flask dashboard showing price and indicators (SMA), and ccxt connectors for exchages.",
+    desc: "Python + ccxt trading agent that orchestrates SMA/RSI signals, manages positions, and streams telemetry into a lightweight Flask dashboard for live tuning.",
     tech: ["Python", "Flask", "Pandas", "ccxt"],
     image: "projects/crypto-bot.png",
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/crypto-trade-bot" },
-      { label: "Demo (local)", href: "http://127.0.0.1:5050/" }
+      { label: "Demo notes", href: "https://github.com/dlonial2/crypto-trade-bot#local-demo" }
     ]
   }
 ];
 
-// photos removed to keep the site minimal per user's request
-
-// ---- render logic (no edits needed) ----
-const $ = sel => document.querySelector(sel);
-const $$ = sel => document.querySelectorAll(sel);
+// ---- Render logic ----
+const $ = (sel) => document.querySelector(sel);
 
 function renderProjects() {
   const grid = $("#projectsGrid");
+  if (!grid) return;
   const tpl = $("#projectCard").content;
-  PROJECTS.forEach(p => {
-    const node = document.importNode(tpl, true);
-  const imgEl = node.querySelector(".project__img");
-  imgEl.src = p.image;
-  imgEl.addEventListener('error', () => { imgEl.style.display = 'none'; });
-    node.querySelector(".project__img").alt = p.title;
-    node.querySelector(".project__title").textContent = p.title;
-    node.querySelector(".project__desc").textContent = p.desc;
 
-    const chips = node.querySelector(".chips");
-    p.tech.forEach(t => {
-      const s = document.createElement("span");
-      s.textContent = t;
-      chips.appendChild(s);
+  PROJECTS.forEach((project) => {
+    const node = document.importNode(tpl, true);
+    const imgEl = node.querySelector(".project__img");
+    imgEl.src = project.image;
+    imgEl.alt = project.title;
+    imgEl.addEventListener("error", () => {
+      imgEl.style.display = "none";
+    });
+
+    node.querySelector(".project__title").textContent = project.title;
+    node.querySelector(".project__desc").textContent = project.desc;
+
+    const techList = node.querySelector(".project__tech");
+    project.tech.forEach((tech) => {
+      const item = document.createElement("li");
+      item.textContent = tech;
+      techList.appendChild(item);
     });
 
     const links = node.querySelector(".project__links");
-    p.links.forEach(l => {
-      const a = document.createElement("a");
-      a.href = l.href;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = l.label + " ↗";
-      links.appendChild(a);
+    project.links.forEach((link) => {
+      const anchor = document.createElement("a");
+      anchor.href = link.href;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      anchor.textContent = `${link.label} ↗`;
+      links.appendChild(anchor);
     });
 
     grid.appendChild(node);
   });
 }
 
-// renderPhotos removed as photos were eliminated from the page
-
-function setupTheme() {
-  const key = "theme";
-  const root = document.documentElement;
-  const saved = localStorage.getItem(key);
-  if (saved === "light") root.classList.add("light");
-  $("#themeToggle").addEventListener("click", () => {
-    root.classList.toggle("light");
-    localStorage.setItem(key, root.classList.contains("light") ? "light" : "dark");
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  $("#year").textContent = new Date().getFullYear();
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
   renderProjects();
-  // renderPhotos() removed as photos were eliminated from the page
-  setupTheme();
 });
