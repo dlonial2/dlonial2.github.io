@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diya Lonial — Portfolio</title>
+  <meta name="description" content="Diya Lonial — SDE @ Citi. Spring Boot microservices, ML systems, clean UIs." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="#top" class="brand">Diya Lonial</a>
+    <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+      <button id="themeToggle" aria-label="Toggle theme">◐</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero__text">
+        <h1>Hi, I'm Diya <span class="wave">👋</span></h1>
+        <p class="lead">
+          I build Spring Boot microservices, ML-flavored side projects, and clean UIs.
+          Currently an SDE at <strong>Citi</strong>. Interested in <strong>ML systems</strong>, 
+          <strong>distributed systems</strong>, and performance.
+        </p>
+        <div class="hero__links">
+          <a class="btn" href="#projects">View projects</a>
+          <a class="btn btn--ghost" href="mailto:dlonial@proton.me">Contact</a>
+        </div>
+      </div>
+      <!-- no headshot: minimal hero with name and intro -->
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container section">
+      <div class="section__head">
+        <h2>Projects</h2>
+        <p class="muted">A few things I’ve shipped or tinkered with recently.</p>
+      </div>
+      <div id="projectsGrid" class="grid"></div>
+    </section>
+
+    <!-- Photos removed (kept minimal) -->
+
+    <!-- About -->
+    <section id="about" class="container section">
+      <div class="card about">
+        <h3>About me</h3>
+        <p>
+          I’m a builder who likes owning problems end-to-end—from backend systems and reliability
+          to the small UX details people feel. At Citi I work on Spring Boot microservices, API security,
+          and data integrations for compliance/risk. Side-quests include a crypto trading bot,
+          a Spotify playlist generator for runners, and a bunch of “try it and learn” experiments.
+        </p>
+        <ul class="bullets">
+          <li><b>Stack:</b> Java/Spring Boot, Python, C++, React, Node</li>
+          <li><b>Focus:</b> ML systems, distributed systems, performance</li>
+          <li><b>Fun:</b> travel, film/digital photography, Spanish cinema</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>© <span id="year"></span> Diya Lonial</span>
+    <span>SDE @ Citi • ML & Systems</span>
+  </footer>
+
+  <template id="projectCard">
+    <article class="card project">
+      <img class="project__img" alt="">
+      <div class="project__body">
+        <h3 class="project__title"></h3>
+        <p class="project__desc"></p>
+        <div class="chips"></div>
+        <div class="project__links"></div>
+      </div>
+    </article>
+  </template>
+  <script src="assets/script.js"></script>
+</body>
+</html>
