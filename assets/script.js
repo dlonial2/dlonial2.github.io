@@ -4,17 +4,16 @@ const PROJECTS = [
     title: "Crypto Trading Bot",
     desc: "Python + ccxt trading agent that blends SMA/RSI signals with lightweight ML scoring to manage positions and stream telemetry into a Flask dashboard for live tuning.",
     tech: ["Python", "Flask", "Pandas", "ccxt"],
-    image: "projects/crypto-bot.png",
+    image: "projects/crypto-bot1.png",
     links: [
-      { label: "GitHub", href: "https://github.com/dlonial2/crypto-trade-bot" },
-      { label: "Demo notes", href: "https://github.com/dlonial2/crypto-trade-bot#local-demo" }
+      { label: "GitHub", href: "https://github.com/dlonial2/crypto-trade-bot" }
     ]
   },
   {
     title: "Personal Shopper",
     desc: "React + FastAPI experience that lets an LLM curate outfits from product catalogs, ranks options through user preferences, and returns shoppable looks.",
     tech: ["React", "FastAPI", "OpenAI", "PostgreSQL"],
-    image: "projects/personal-shopper.png",
+    image: "projects/personalshopper1.png",
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/personal-shopper" }
     ]
@@ -23,10 +22,9 @@ const PROJECTS = [
     title: "Diabetes Risk Prediction (India)",
     desc: "Benchmarked logistic regression vs. random forest on Kaggle's India diabetes dataset after building a robust preprocessing pipeline for 26 clinical + lifestyle features.",
     tech: ["Python", "scikit-learn", "Pandas", "Streamlit"],
-    image: "assets/project-placeholder.svg",
+    image: "projects/diabetes-risk1.png",
     links: [
-      { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" },
-      { label: "Case study", href: "/projects/diabetes-risk-india" }
+      { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" }
     ]
   }
 ];
