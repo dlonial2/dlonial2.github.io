@@ -5,6 +5,11 @@ const PROJECTS = [
     desc: "Python + ccxt trading agent that blends SMA/RSI signals with lightweight ML scoring to manage positions and stream telemetry into a Flask dashboard for live tuning.",
     tech: ["Python", "Flask", "Pandas", "ccxt"],
     image: "projects/crypto-bot1.png",
+    images: [
+      "projects/crypto-bot1.png",
+      "projects/crypto2.png",
+      "projects/crypto3.png"
+    ],
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/crypto-trade-bot" }
     ]
@@ -14,6 +19,9 @@ const PROJECTS = [
     desc: "React + FastAPI experience that lets an LLM curate outfits from product catalogs, ranks options through user preferences, and returns shoppable looks.",
     tech: ["React", "FastAPI", "OpenAI", "PostgreSQL"],
     image: "projects/personalshopper1.png",
+    images: [
+      "projects/personalshopper1.png"
+    ],
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/personal-shopper" }
     ]
@@ -23,6 +31,10 @@ const PROJECTS = [
     desc: "Benchmarked logistic regression vs. random forest on Kaggle's India diabetes dataset after building a robust preprocessing pipeline for 26 clinical + lifestyle features.",
     tech: ["Python", "scikit-learn", "Pandas", "Streamlit"],
     image: "projects/diabetes-risk1.png",
+    images: [
+      "projects/diabetes-risk1.png",
+      "projects/diabetes-risk2.png"
+    ],
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" }
     ]
@@ -59,11 +71,55 @@ function renderProjects() {
   PROJECTS.forEach((project) => {
     const node = document.importNode(tpl, true);
     const imgEl = node.querySelector(".project__img");
-    imgEl.src = project.image;
+    const gallery = Array.isArray(project.images) && project.images.length
+      ? project.images
+      : [project.image].filter(Boolean);
+    const fallbackImage = project.image || "assets/project-placeholder.svg";
+    const primaryImage = gallery.length ? gallery[0] : fallbackImage;
+
+    imgEl.src = primaryImage;
     imgEl.alt = project.title;
     imgEl.addEventListener("error", () => {
-      imgEl.style.display = "none";
+      imgEl.src = fallbackImage;
     });
+
+    if (gallery.length > 1) {
+      const media = node.querySelector(".project__media");
+      const thumbWrap = document.createElement("div");
+      thumbWrap.className = "project__thumbs";
+
+      const updateActive = (activeBtn) => {
+        thumbWrap.querySelectorAll(".project__thumb").forEach((btn) => {
+          btn.classList.toggle("is-active", btn === activeBtn);
+        });
+      };
+
+      gallery.forEach((src, index) => {
+        const thumbBtn = document.createElement("button");
+        thumbBtn.type = "button";
+        thumbBtn.className = "project__thumb";
+        thumbBtn.setAttribute("aria-label", `${project.title} preview ${index + 1}`);
+
+        const thumbImg = document.createElement("img");
+        thumbImg.src = src;
+        thumbImg.alt = "";
+        thumbImg.loading = "lazy";
+        thumbBtn.appendChild(thumbImg);
+
+        if (index === 0) {
+          thumbBtn.classList.add("is-active");
+        }
+
+        thumbBtn.addEventListener("click", () => {
+          imgEl.src = src;
+          updateActive(thumbBtn);
+        });
+
+        thumbWrap.appendChild(thumbBtn);
+      });
+
+      media.appendChild(thumbWrap);
+    }
 
     node.querySelector(".project__title").textContent = project.title;
     node.querySelector(".project__desc").textContent = project.desc;
