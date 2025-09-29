@@ -69,14 +69,32 @@
 
     <section id="personal" class="section">
       <div class="section__head">
-        <h2>Personal</h2>
+        <h2>Travel log</h2>
+        <p>Pin drops that keep me inspired—click to peek at a few favorite shots.</p>
       </div>
-      <div class="personal">
-        <p>I recharge by traveling to new cities, hunting for the best coffee, and getting outdoors with friends (and any dogs I can borrow).</p>
-        <p>Other staples: photography walks, Spanish cinema, strength training, and testing recipes until they become weekend rituals.</p>
+      <div class="map" id="travelMap">
+        <img class="map__image" src="assets/world-map.svg" alt="Simplified world map">
+        <button class="map__pin" type="button" data-stop="austin" style="top: 58%; left: 32%;">
+          <span class="map__pulse"></span>
+          <span class="map__label">Austin, TX</span>
+        </button>
+        <button class="map__pin" type="button" data-stop="paris" style="top: 43%; left: 58%;">
+          <span class="map__pulse"></span>
+          <span class="map__label">Paris, France</span>
+        </button>
       </div>
     </section>
   </main>
+
+  <div class="gallery" id="galleryModal" aria-hidden="true">
+    <div class="gallery__overlay" data-close></div>
+    <div class="gallery__content" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
+      <button class="gallery__close" type="button" data-close aria-label="Close gallery">×</button>
+      <h3 id="galleryTitle"></h3>
+      <p id="galleryBlurb"></p>
+      <div class="gallery__grid" id="galleryImages"></div>
+    </div>
+  </div>
 
   <footer class="footer">
     <span>© <span id="year"></span> Diya Lonial</span>
