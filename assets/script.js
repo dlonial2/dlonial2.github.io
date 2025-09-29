@@ -28,7 +28,7 @@ const PROJECTS = [
   },
   {
     title: "Diabetes Risk Prediction (India)",
-    desc: "Built a diabetes risk identifier using Kaggle’s India diabetes dataset. Designed a preprocessing pipeline for 26 clinical and lifestyle features, then trained and benchmarked logistic regression and random forest classifiers to predict diabetes presence.",
+    desc: "A Random Forest–based machine learning model to identify diabetes risk from Kaggle’s India diabetes dataset. Features a robust preprocessing pipeline for 26 clinical and lifestyle attributes, including normalization and encoding, and benchmarks against logistic regression with ROC/AUC evaluation for reliable classification.",
     tech: ["Python", "scikit-learn", "Pandas", "Streamlit"],
     image: "projects/diabetes-risk1.png",
     images: [
