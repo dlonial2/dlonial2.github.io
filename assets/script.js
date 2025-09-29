@@ -26,14 +26,16 @@ const TRAVEL_STOPS = {
     title: "Austin, Texas",
     blurb: "Coffee crawls, golden-hour walks along Lady Bird Lake, and plenty of live music energy.",
     photos: [
-      { src: "photos/austin-1.jpg", alt: "Sunset skyline view of Austin, Texas" }
+      { src: "photos/austin-1.png" },
+      { src: "photos/austin-2.png" }
     ]
   },
   paris: {
     title: "Paris, France",
     blurb: "Photo walks through the Marais, sunrise croissants near the Seine, and museum days that stretch into late-night metro rides.",
     photos: [
-      { src: "photos/paris-1.jpg", alt: "Street scene from Paris, France" }
+      { src: "photos/paris-1.png" },
+      { src: "photos/paris-2.png" }
     ]
   }
 };
