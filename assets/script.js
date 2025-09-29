@@ -24,7 +24,7 @@ const PROJECTS = [
 const TRAVEL_STOPS = {
   austin: {
     title: "Austin, Texas",
-    blurb: "Coffee crawls, golden-hour walks along Lady Bird Lake, and plenty of live music energy.",
+    blurb: "",
     photos: [
       { src: "photos/austin-1.png" },
       { src: "photos/austin-2.png" }
@@ -32,7 +32,7 @@ const TRAVEL_STOPS = {
   },
   paris: {
     title: "Paris, France",
-    blurb: "Photo walks through the Marais, sunrise croissants near the Seine, and museum days that stretch into late-night metro rides.",
+    blurb: "",
     photos: [
       { src: "photos/paris-1.png" },
       { src: "photos/paris-2.png" }
@@ -90,13 +90,76 @@ function setupTravelMap() {
   const blurbEl = $("#galleryBlurb");
   const gridEl = $("#galleryImages");
   const closeEls = modal.querySelectorAll("[data-close]");
+  const contentEl = modal.querySelector(".gallery__content");
   let lastFocus = null;
+  let activeImg = null;
+  let currentStop = null;
+  let currentIndex = 0;
+
+  const ensureNavButton = (className, label, symbol) => {
+    if (!contentEl) return null;
+    let btn = contentEl.querySelector(`.${className}`);
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `gallery__nav ${className}`;
+      btn.setAttribute("aria-label", label);
+      btn.textContent = symbol;
+      contentEl.appendChild(btn);
+    }
+    return btn;
+  };
+
+  const prevBtn = ensureNavButton("gallery__nav--prev", "Previous photo", "‹");
+  const nextBtn = ensureNavButton("gallery__nav--next", "Next photo", "›");
+
+  const updateNavVisibility = () => {
+    const hideNav = !currentStop || !currentStop.photos || currentStop.photos.length <= 1;
+    [prevBtn, nextBtn].forEach((btn) => {
+      if (!btn) return;
+      btn.hidden = hideNav;
+    });
+  };
+
+  updateNavVisibility();
+
+  const showPhoto = (index) => {
+    if (!currentStop || !activeImg) return;
+    const photos = currentStop.photos || [];
+    if (!photos.length) return;
+    const total = photos.length;
+    const normalized = ((index % total) + total) % total;
+    const photo = photos[normalized];
+    currentIndex = normalized;
+    activeImg.src = photo.src;
+    activeImg.alt = photo.alt || currentStop.title || "";
+    updateNavVisibility();
+  };
+
+  const stepPhoto = (delta) => {
+    if (!currentStop) return;
+    const photos = currentStop.photos || [];
+    if (photos.length <= 1) return;
+    showPhoto(currentIndex + delta);
+  };
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => stepPhoto(-1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => stepPhoto(1));
+  }
 
   const close = () => {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
     if (gridEl) gridEl.innerHTML = "";
+    activeImg = null;
+    currentStop = null;
+    currentIndex = 0;
+    updateNavVisibility();
     if (lastFocus) {
       lastFocus.focus();
       lastFocus = null;
@@ -112,20 +175,28 @@ function setupTravelMap() {
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
 
-    titleEl.textContent = stop.title;
-    blurbEl.textContent = stop.blurb;
+    titleEl.textContent = stop.title || "";
+    if (stop.blurb) {
+      blurbEl.textContent = stop.blurb;
+      blurbEl.hidden = false;
+    } else {
+      blurbEl.textContent = "";
+      blurbEl.hidden = true;
+    }
     gridEl.innerHTML = "";
 
-    stop.photos.forEach((photo) => {
-      const img = document.createElement("img");
-      img.src = photo.src;
-      img.alt = photo.alt || stop.title;
-      img.loading = "lazy";
-      img.addEventListener("error", () => {
-        img.remove();
-      });
-      gridEl.appendChild(img);
+    activeImg = document.createElement("img");
+    activeImg.loading = "lazy";
+    activeImg.addEventListener("error", () => {
+      if (!activeImg) return;
+      activeImg.remove();
+      activeImg = null;
     });
+    gridEl.appendChild(activeImg);
+
+    currentStop = stop;
+    currentIndex = 0;
+    showPhoto(currentIndex);
 
     const closeButton = modal.querySelector(".gallery__close");
     if (closeButton instanceof HTMLElement) {
@@ -152,6 +223,16 @@ function setupTravelMap() {
   document.addEventListener("keydown", (ev) => {
     if (ev.key === "Escape" && modal.classList.contains("is-open")) {
       close();
+      return;
+    }
+    if (!modal.classList.contains("is-open")) return;
+    if (ev.key === "ArrowRight") {
+      ev.preventDefault();
+      stepPhoto(1);
+    }
+    if (ev.key === "ArrowLeft") {
+      ev.preventDefault();
+      stepPhoto(-1);
     }
   });
 }
