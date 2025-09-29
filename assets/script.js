@@ -9,6 +9,15 @@ const PROJECTS = [
       { label: "GitHub", href: "https://github.com/dlonial2/crypto-trade-bot" },
       { label: "Demo notes", href: "https://github.com/dlonial2/crypto-trade-bot#local-demo" }
     ]
+  },
+  {
+    title: "Personal Shopper",
+    desc: "React + FastAPI experience that lets an LLM curate outfits from product catalogs, ranks options through user preferences, and returns shoppable looks.",
+    tech: ["React", "FastAPI", "OpenAI", "PostgreSQL"],
+    image: "projects/personal-shopper.png",
+    links: [
+      { label: "GitHub", href: "https://github.com/dlonial2/personal-shopper" }
+    ]
   }
 ];
 
