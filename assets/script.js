@@ -2,7 +2,7 @@
 const PROJECTS = [
   {
     title: "Crypto Trading Bot",
-    desc: "Python + ccxt trading agent that orchestrates SMA/RSI signals, manages positions, and streams telemetry into a lightweight Flask dashboard for live tuning.",
+    desc: "Python + ccxt trading agent that blends SMA/RSI signals with lightweight ML scoring to manage positions and stream telemetry into a Flask dashboard for live tuning.",
     tech: ["Python", "Flask", "Pandas", "ccxt"],
     image: "projects/crypto-bot.png",
     links: [
