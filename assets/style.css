@@ -213,9 +213,15 @@ img {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  padding-top: 0.25rem;
 }
 
 .project__thumb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 58px;
   border: 1px solid transparent;
   border-radius: 12px;
   padding: 0;
@@ -227,8 +233,8 @@ img {
 
 .project__thumb img {
   display: block;
-  width: 72px;
-  height: 52px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 

@@ -28,7 +28,7 @@ const PROJECTS = [
   },
   {
     title: "Diabetes Risk Prediction (India)",
-    desc: "Benchmarked logistic regression vs. random forest on Kaggle's India diabetes dataset after building a robust preprocessing pipeline for 26 clinical + lifestyle features.",
+    desc: "Built a diabetes risk identifier using Kaggle’s India diabetes dataset. Designed a preprocessing pipeline for 26 clinical and lifestyle features, then trained and benchmarked logistic regression and random forest classifiers to predict diabetes presence.",
     tech: ["Python", "scikit-learn", "Pandas", "Streamlit"],
     image: "projects/diabetes-risk1.png",
     images: [
@@ -75,7 +75,7 @@ function renderProjects() {
       ? project.images
       : [project.image].filter(Boolean);
     const fallbackImage = project.image || "assets/project-placeholder.svg";
-    const primaryImage = gallery.length ? gallery[0] : fallbackImage;
+    const primaryImage = gallery[0] || fallbackImage;
 
     imgEl.src = primaryImage;
     imgEl.alt = project.title;
