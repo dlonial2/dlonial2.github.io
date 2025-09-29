@@ -18,6 +18,16 @@ const PROJECTS = [
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/personal-shopper" }
     ]
+  },
+  {
+    title: "Diabetes Risk Prediction (India)",
+    desc: "Benchmarked logistic regression vs. random forest on Kaggle's India diabetes dataset after building a robust preprocessing pipeline for 26 clinical + lifestyle features.",
+    tech: ["Python", "scikit-learn", "Pandas", "Streamlit"],
+    image: "assets/project-placeholder.svg",
+    links: [
+      { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" },
+      { label: "Case study", href: "/projects/diabetes-risk-india" }
+    ]
   }
 ];
 
