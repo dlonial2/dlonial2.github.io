@@ -18,24 +18,21 @@
         <div class="hero__links">
           <a href="#projects">Projects</a>
           <a href="#about">About</a>
-          <a href="mailto:diyalonial@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/diyalonial1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </nav>
       <div class="hero__content">
-        <ul class="chips">
-          <li>citi</li>
-          <li>ml systems</li>
-          <li>distributed systems</li>
-          <li>clean ux</li>
-        </ul>
         <h1>Hi, I'm Diya <span class="wave" aria-hidden="true">👋</span></h1>
         <p class="tagline">
-          I build Spring Boot microservices, ML-flavored automation, and product polish that people feel.
-          Currently an SDE at <strong>Citi</strong> focused on reliability and compliance platforms.
+          Software Engineer who studied Computer Science and Cognitive Science at the University of Illinois Urbana-Champaign.
+          Passionate about systems design, AI/ML applications, and building technology that feels polished and reliable.
+          I love machine learning systems, distributed computing, and performance optimization—the intersection of backend systems,
+          automation, and user-focused engineering. Experience includes shipping Spring Boot microservices, reliability frameworks,
+          and compliance platforms.
         </p>
         <div class="cta">
           <a class="btn" href="#projects">View projects</a>
-          <a class="btn btn--ghost" href="mailto:diyalonial@gmail.com">Let's talk</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/diyalonial1/" target="_blank" rel="noopener noreferrer">Let's talk</a>
         </div>
       </div>
     </div>
@@ -45,9 +42,28 @@
     <section id="projects" class="section">
       <div class="section__head">
         <h2>Projects</h2>
-        <p>Things I've shipped or tinkered with recently.</p>
       </div>
       <div id="projectsGrid" class="projects"></div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="section__head">
+        <h2>Tech stack</h2>
+      </div>
+      <div class="skills">
+        <div>
+          <h3>Languages & Frameworks</h3>
+          <p>Java, Spring Boot, Python, Flask, C++, JavaScript, React, Node</p>
+        </div>
+        <div>
+          <h3>Systems & Tooling</h3>
+          <p>Microservices, distributed systems, Kafka, REST/GraphQL APIs, Terraform, Docker, GitHub Actions</p>
+        </div>
+        <div>
+          <h3>Machine Learning</h3>
+          <p>Model deployment, feature pipelines, experiment tracking, data visualization</p>
+        </div>
+      </div>
     </section>
 
     <section id="about" class="section">
@@ -71,11 +87,20 @@
         </ul>
       </div>
     </section>
+
+    <section id="personal" class="section">
+      <div class="section__head">
+        <h2>Personal</h2>
+      </div>
+      <div class="personal">
+        <p>I recharge by traveling to new cities, hunting for the best coffee, and getting outdoors with friends (and any dogs I can borrow).</p>
+        <p>Other staples: photography walks, Spanish cinema, strength training, and testing recipes until they become weekend rituals.</p>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <span>© <span id="year"></span> Diya Lonial</span>
-    <span>SDE @ Citi • ML & Systems</span>
   </footer>
 
   <template id="projectCard">
