@@ -57,6 +57,31 @@ const TRAVEL_STOPS = {
       { src: "photos/paris-1.png" },
       { src: "photos/paris-2.png" }
     ]
+  },
+  barcelona: {
+    title: "Barcelona, Spain",
+    blurb: "",
+    photos: []
+  },
+  sf: {
+    title: "San Francisco, California",
+    blurb: "",
+    photos: []
+  },
+  camas: {
+    title: "Camas, Washington",
+    blurb: "",
+    photos: []
+  },
+  india: {
+    title: "India",
+    blurb: "",
+    photos: []
+  },
+  nyc: {
+    title: "New York City, NY",
+    blurb: "",
+    photos: []
   }
 };
 

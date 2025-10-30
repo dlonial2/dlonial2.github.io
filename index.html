@@ -17,19 +17,21 @@
         <a class="logo" href="#top">Diya Lonial</a>
         <div class="hero__links">
           <a href="#projects">Projects</a>
-          <a href="#skills">Tech</a>
-          <a href="#personal">Personal</a>
-          <a href="https://www.linkedin.com/in/diyalonial1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="#about">About</a>
+          <a href="mailto:diyalonial@gmail.com">Email</a>
         </div>
       </nav>
       <div class="hero__content">
+        <ul class="chips">
+          <li>citi</li>
+          <li>ml systems</li>
+          <li>distributed systems</li>
+          <li>clean ux</li>
+        </ul>
         <h1>Hi, I'm Diya <span class="wave" aria-hidden="true">👋</span></h1>
         <p class="tagline">
-          Software Engineer who studied Computer Science and Cognitive Science at the University of Illinois Urbana-Champaign.
-          Passionate about systems design, AI/ML applications, and building technology that feels polished and reliable.
-          I love machine learning systems, distributed computing, and performance optimization—the intersection of backend systems,
-          automation, and user-focused engineering. Experience includes shipping Spring Boot microservices, reliability frameworks,
-          and compliance platforms.
+          I build Spring Boot microservices, ML-flavored automation, and product polish that people feel.
+          Currently an SDE at <strong>Citi</strong> focused on reliability and compliance platforms.
         </p>
         <div class="cta">
           <a class="btn" href="#projects">View projects</a>
@@ -43,61 +45,127 @@
     <section id="projects" class="section">
       <div class="section__head">
         <h2>Projects</h2>
+        <p>Things I've shipped or tinkered with recently.</p>
       </div>
-      <div id="projectsGrid" class="projects"></div>
+      <div id="projectsGrid" class="projects">
+        <article class="project">
+          <div class="project__media">
+            <img class="project__img" alt="ROC curve placeholder" src="https://dummyimage.com/800x450/eeeeee/555555.png&text=ROC+Curve+%28placeholder%29">
+          </div>
+          <div class="project__body">
+            <h3 class="project__title">Diabetes Identification Model (Pima Indians)</h3>
+            <p class="project__desc">
+              Supervised classifier that estimates diabetes risk from eight clinical features. Trained and validated on the Pima Indians Diabetes dataset with a simple, reproducible pipeline.
+            </p>
+            <ul class="chips project__tech">
+              <li>Python</li>
+              <li>scikit-learn</li>
+              <li>Pandas</li>
+              <li>ROC AUC 0.813</li>
+            </ul>
+            <details class="project__metrics">
+              <summary>Show metrics</summary>
+              <ul>
+                <li><strong>Accuracy:</strong> 0.708</li>
+                <li><strong>Precision:</strong> 0.600</li>
+                <li><strong>Recall:</strong> 0.500</li>
+                <li><strong>F1:</strong> 0.545</li>
+                <li><strong>ROC AUC:</strong> 0.813</li>
+              </ul>
+              <div style="overflow-x:auto">
+                <table class="cm">
+                  <thead>
+                    <tr><th></th><th>Pred 0</th><th>Pred 1</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>True 0</td><td>82</td><td>18</td></tr>
+                    <tr><td>True 1</td><td>27</td><td>27</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <small>n_train = 614 • n_valid = 154 • Features: Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age</small>
+            </details>
+            <div class="project__links">
+              <a class="btn btn--ghost" href="#about">Read approach</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="travel" class="section">
       <div class="section__head">
-        <h2>Tech stack</h2>
+        <h2>Travel</h2>
+        <p>Places I've explored and photographed.</p>
       </div>
-      <div class="skills">
-        <div>
-          <h3>Languages & Frameworks</h3>
-          <p>Java, Spring Boot, Python, Flask, C++, JavaScript, React, Node</p>
-        </div>
-        <div>
-          <h3>Systems & Tooling</h3>
-          <p>Microservices, distributed systems, Kafka, REST/GraphQL APIs, Terraform, Docker, GitHub Actions</p>
-        </div>
-        <div>
-          <h3>Machine Learning</h3>
-          <p>Model deployment, feature pipelines, experiment tracking, data visualization</p>
+      <div class="map">
+        <img class="map__image" src="assets/world-map.svg" alt="World map">
+        <button class="map__pin" type="button" style="top: 37%; left: 14%" data-stop="paris">
+          <div class="map__pulse"></div>
+          <span class="map__label">Paris</span>
+        </button>
+        <button class="map__pin" type="button" style="top: 38%; left: 23%" data-stop="barcelona">
+          <div class="map__pulse"></div>
+          <span class="map__label">Barcelona</span>
+        </button>
+        <button class="map__pin" type="button" style="top: 38%; left: 19%" data-stop="nyc">
+          <div class="map__pulse"></div>
+          <span class="map__label">New York City</span>
+        </button>
+        <button class="map__pin" type="button" style="top: 36%; left: 12%" data-stop="sf">
+          <div class="map__pulse"></div>
+          <span class="map__label">San Francisco</span>
+        </button>
+        <button class="map__pin" type="button" style="top: 34%; left: 11%" data-stop="camas">
+          <div class="map__pulse"></div>
+          <span class="map__label">Camas</span>
+        </button>
+        <button class="map__pin" type="button" style="top: 40%; left: 70%" data-stop="india">
+          <div class="map__pulse"></div>
+          <span class="map__label">India</span>
+        </button>
+        <button class="map__pin" type="button" style="top: 42%; left: 21%" data-stop="austin">
+          <div class="map__pulse"></div>
+          <span class="map__label">Austin</span>
+        </button>
+      </div>
+      <div id="galleryModal" class="gallery" aria-hidden="true">
+        <div class="gallery__overlay" data-close></div>
+        <div class="gallery__content">
+          <h3 id="galleryTitle"></h3>
+          <p id="galleryBlurb"></p>
+          <div id="galleryImages"></div>
+          <button class="gallery__close" type="button" aria-label="Close gallery" data-close>×</button>
         </div>
       </div>
     </section>
 
-    <section id="personal" class="section">
+    <section id="about" class="section">
       <div class="section__head">
-        <h2>Travel log</h2>
-        <p>Pin drops that keep me inspired—click to peek at a few favorite shots.</p>
+        <h2>About</h2>
       </div>
-      <div class="map" id="travelMap">
-        <img class="map__image" src="assets/world-map.svg" alt="Simplified world map">
-        <button class="map__pin" type="button" data-stop="austin" style="top: 33%; left: 23%;">
-          <span class="map__pulse"></span>
-          <span class="map__label">Austin, TX</span>
-        </button>
-        <button class="map__pin" type="button" data-stop="paris" style="top: 23%; left: 51%;">
-          <span class="map__pulse"></span>
-          <span class="map__label">Paris, France</span>
-        </button>
+      <div class="about">
+        <p>
+          I like owning problems end-to-end—from backend systems and data contracts to the tiny UX details that make
+          a product feel trustworthy. At Citi I ship Spring Boot microservices, API security, and integration workflows
+          for compliance and risk teams.
+        </p>
+        <p>
+          Side quests: a crypto trading bot that steers via SMA/RSI signals, a Spotify playlist generator for runners,
+          and whatever forces me to learn a new system.
+        </p>
+        <ul class="about__list">
+          <li><strong>Stack:</strong> Java/Spring, Python, C++, React, Node</li>
+          <li><strong>Focus:</strong> ML systems, distributed systems, performance</li>
+          <li><strong>Fun:</strong> travel, film/digital photography, Spanish cinema</li>
+        </ul>
       </div>
     </section>
   </main>
 
-  <div class="gallery" id="galleryModal" aria-hidden="true">
-    <div class="gallery__overlay" data-close></div>
-    <div class="gallery__content" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
-      <button class="gallery__close" type="button" data-close aria-label="Close gallery">×</button>
-      <h3 id="galleryTitle"></h3>
-      <p id="galleryBlurb"></p>
-      <div class="gallery__grid" id="galleryImages"></div>
-    </div>
-  </div>
-
   <footer class="footer">
     <span>© <span id="year"></span> Diya Lonial</span>
+    <span>SDE @ Citi • ML & Systems</span>
   </footer>
 
   <template id="projectCard">
