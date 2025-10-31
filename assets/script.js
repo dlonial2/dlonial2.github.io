@@ -1,6 +1,19 @@
 // ---- Edit your project data here ----
 const PROJECTS = [
   {
+    title: "Early-Stage Diabetes Detection (India)",
+    desc: "ML pipeline that predicts early-stage diabetes from clinical symptom data in India. Built schema-validated data loading with automatic type handling and categorical cleanup, used a ColumnTransformer for consistent preprocessing, and trained a 200-tree Random Forest reaching ~97% accuracy and 0.999 ROC-AUC. Deployed for batch and real-time predictions, with symptom-level explanations so clinicians can understand model decisions.",
+    tech: ["Python", "scikit-learn", "Pandas", "ColumnTransformer"],
+    image: "projects/diabetes_india_clinic_confusion_matrix.png",
+    images: [
+      "projects/diabetes_india_clinic_confusion_matrix.png",
+      "projects/diabetes_india_clinic_roc_curve.png"
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" }
+    ]
+  },
+  {
     title: "Crypto Trading Bot",
     desc: "Python + ccxt trading agent that blends SMA/RSI signals with lightweight ML scoring to manage positions and stream telemetry into a Flask dashboard for live tuning.",
     tech: ["Python", "Flask", "Pandas", "ccxt"],
