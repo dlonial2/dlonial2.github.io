@@ -30,9 +30,8 @@
         </ul>
         <h1>Hi, I'm Diya <span class="wave" aria-hidden="true">👋</span></h1>
         <p class="tagline">
-          Recent graduate from UIUC with a unique blend of Cognitive Science and Computer Science. At <strong>Citi</strong>, 
-          I leverage this interdisciplinary background as a Full Stack Developer Engineer, building intuitive solutions 
-          that bridge human cognition with technical innovation.
+          UIUC Cognitive Science + Computer Science graduate focused on backend systems and applied machine learning. At <strong>Citi</strong>, 
+          I work as a Full-Stack Software Engineer across Spring Boot microservices, secure data flows, and automated compliance pipelines to build reliable, observable software in production financial environments.
         </p>
         <div class="cta">
           <a class="btn" href="#projects">View projects</a>
@@ -49,48 +48,23 @@
         <p>Things I've shipped or tinkered with recently.</p>
       </div>
       <div id="projectsGrid" class="projects">
-        <article class="project">
-          <div class="project__media">
-            <img class="project__img" alt="ROC curve placeholder" src="https://dummyimage.com/800x450/eeeeee/555555.png&text=ROC+Curve+%28placeholder%29">
-          </div>
-          <div class="project__body">
-            <h3 class="project__title">Diabetes Identification Model (Pima Indians)</h3>
-            <p class="project__desc">
-              Supervised classifier that estimates diabetes risk from eight clinical features. Trained and validated on the Pima Indians Diabetes dataset with a simple, reproducible pipeline.
-            </p>
-            <ul class="chips project__tech">
-              <li>Python</li>
-              <li>scikit-learn</li>
-              <li>Pandas</li>
-              <li>ROC AUC 0.813</li>
-            </ul>
-            <details class="project__metrics">
-              <summary>Show metrics</summary>
-              <ul>
-                <li><strong>Accuracy:</strong> 0.708</li>
-                <li><strong>Precision:</strong> 0.600</li>
-                <li><strong>Recall:</strong> 0.500</li>
-                <li><strong>F1:</strong> 0.545</li>
-                <li><strong>ROC AUC:</strong> 0.813</li>
-              </ul>
-              <div style="overflow-x:auto">
-                <table class="cm">
-                  <thead>
-                    <tr><th></th><th>Pred 0</th><th>Pred 1</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>True 0</td><td>82</td><td>18</td></tr>
-                    <tr><td>True 1</td><td>27</td><td>27</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <small>n_train = 614 • n_valid = 154 • Features: Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age</small>
-            </details>
-            <div class="project__links">
-              <a class="btn btn--ghost" href="#about">Read approach</a>
-            </div>
-          </div>
-        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section__head">
+        <h2>About</h2>
+      </div>
+      <div class="about">
+        <p>
+          I enjoy working on backend systems that are reliable, observable, and easy to understand. My interests include distributed systems, data engineering, and applied machine learning, with a focus on how data moves through systems, how services communicate, and how to keep software predictable as it scales.
+        </p>
+        <p>
+          Right now I am deepening my skills in systems design, ML deployment, and production readiness, with a particular interest in stream processing, service coordination, and understanding performance and failure behavior in real environments.
+        </p>
+        <p>
+          Outside of work I travel, read, explore new food and coffee spots, shoot film, and hike with my dog. I like learning continuously and pulling ideas from different places and disciplines.
+        </p>
       </div>
     </section>
 
@@ -101,34 +75,8 @@
       </div>
       <div class="map">
         <img class="map__image" src="assets/world-map.svg" alt="World map">
-        <button class="map__pin" type="button" style="top: 25%; left: 46%" data-stop="paris">
-          <div class="map__pulse"></div>
-          <span class="map__label">Paris</span>
-        </button>
-        <button class="map__pin" type="button" style="top: 27%; left: 44%" data-stop="barcelona">
-          <div class="map__pulse"></div>
-          <span class="map__label">Barcelona</span>
-        </button>
-        <button class="map__pin" type="button" style="top: 25%; left: 25%" data-stop="nyc">
-          <div class="map__pulse"></div>
-          <span class="map__label">New York City</span>
-        </button>
-        <button class="map__pin" type="button" style="top: 25%; left: 15%" data-stop="sf">
-          <div class="map__pulse"></div>
-          <span class="map__label">San Francisco</span>
-        </button>
-        <button class="map__pin" type="button" style="top: 22%; left: 14%" data-stop="camas">
-          <div class="map__pulse"></div>
-          <span class="map__label">Camas</span>
-        </button>
-        <button class="map__pin" type="button" style="top: 35%; left: 73%" data-stop="india">
-          <div class="map__pulse"></div>
-          <span class="map__label">India</span>
-        </button>
-        <button class="map__pin" type="button" style="top: 30%; left: 20%" data-stop="austin">
-          <div class="map__pulse"></div>
-          <span class="map__label">Austin</span>
-        </button>
+        <!-- pins will be rendered dynamically from JS using lat/lon -> SVG mapping -->
+        <div class="map__pins" aria-hidden="false"></div>
       </div>
       <div id="galleryModal" class="gallery" aria-hidden="true">
         <div class="gallery__overlay" data-close></div>
@@ -138,30 +86,6 @@
           <div id="galleryImages"></div>
           <button class="gallery__close" type="button" aria-label="Close gallery" data-close>×</button>
         </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="section__head">
-        <h2>About</h2>
-      </div>
-      <div class="about">
-        <p>
-          I specialize in building robust backend systems and data platforms that solve complex business challenges. 
-          My approach combines strong engineering fundamentals with a keen focus on scalability and reliability. 
-          At Citi, I lead initiatives in microservices architecture and automated compliance systems that process millions of transactions daily.
-        </p>
-        <p>
-          Beyond core development, I'm passionate about exploring emerging technologies through hands-on projects - 
-          from building ML-powered trading systems to developing natural language processing applications. 
-          These side projects keep me at the forefront of technology while strengthening my problem-solving toolkit.
-        </p>
-        <ul class="about__list">
-          <li><strong>Backend:</strong> Java/Spring, Python, distributed systems</li>
-          <li><strong>Data & ML:</strong> Large-scale data processing, predictive modeling</li>
-          <li><strong>Architecture:</strong> System design, API development, cloud infrastructure</li>
-          <li><strong>Interests:</strong> Financial technology, automation, technical writing</li>
-        </ul>
       </div>
     </section>
   </main>

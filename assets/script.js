@@ -25,19 +25,6 @@ const PROJECTS = [
     links: [
       { label: "GitHub", href: "https://github.com/dlonial2/personal-shopper" }
     ]
-  },
-  {
-    title: "Diabetes Risk Prediction (India)",
-    desc: "A Random Forest–based machine learning model to identify diabetes risk from Kaggle’s India diabetes dataset. Features a robust preprocessing pipeline for 26 clinical and lifestyle attributes, including normalization and encoding, and benchmarks against logistic regression with ROC/AUC evaluation for reliable classification.",
-    tech: ["Python", "scikit-learn", "Pandas", "Streamlit"],
-    image: "projects/diabetes-risk1.png",
-    images: [
-      "projects/diabetes-risk1.png",
-      "projects/diabetes-risk2.png"
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" }
-    ]
   }
 ];
 
@@ -45,6 +32,11 @@ const TRAVEL_STOPS = {
   austin: {
     title: "Austin, Texas",
     blurb: "",
+    // Austin coordinates
+    lat: 30.2672,
+    lon: -97.7431,
+    // manual percent override to place Austin more centrally in Texas on the map
+    posPercent: { left: 30, top: 36 },
     photos: [
       { src: "photos/austin-1.png" },
       { src: "photos/austin-2.png" }
@@ -53,6 +45,9 @@ const TRAVEL_STOPS = {
   paris: {
     title: "Paris, France",
     blurb: "",
+    // coordinates for Paris
+    lat: 48.8566,
+    lon: 2.3522,
     photos: [
       { src: "photos/paris-1.png" },
       { src: "photos/paris-2.png" }
@@ -61,29 +56,98 @@ const TRAVEL_STOPS = {
   barcelona: {
     title: "Barcelona, Spain",
     blurb: "",
+    // lat, lon used to compute pin position on the equirectangular SVG map
+    lat: 41.3851,
+    lon: 2.1734,
     photos: []
   },
   sf: {
     title: "San Francisco, California",
     blurb: "",
+    lat: 37.7749,
+    lon: -122.4194,
+    // manual percent override to nudge SF further to the west edge
+    posPercent: { left: 4, top: 34 },
     photos: []
   },
   camas: {
     title: "Camas, Washington",
     blurb: "",
+    lat: 45.5843,
+    lon: -122.3991,
+    // nudge Camas to the far west edge for visual alignment
+    posPercent: { left: 2, top: 22 },
     photos: []
   },
   india: {
     title: "India",
     blurb: "",
+    // approximate center of India
+    lat: 22.0,
+    lon: 79.0,
     photos: []
   },
   nyc: {
     title: "New York City, NY",
     blurb: "",
+    lat: 40.7128,
+    lon: -74.0060,
     photos: []
   }
 };
+
+// Render travel pins dynamically from TRAVEL_STOPS using lat/lon -> percentage mapping.
+function renderTravelPins() {
+  const container = document.querySelector('.map__pins');
+  if (!container) return;
+
+  // Helper: convert lat/lon to top/left percentages for an equirectangular projection
+  const latLonToPercent = (lat, lon) => {
+    // longitude -180..180 -> 0..100%
+    const left = ((lon + 180) / 360) * 100;
+    // latitude 90..-90 -> 0..100% (top to bottom)
+    const top = ((90 - lat) / 180) * 100;
+    return { left, top };
+  };
+
+  // Clear any existing pins
+  container.innerHTML = '';
+
+  Object.keys(TRAVEL_STOPS).forEach((key) => {
+    const stop = TRAVEL_STOPS[key];
+    if (!stop) return;
+    // require lat/lon to render a pin; skip stops without coordinates
+    if (typeof stop.lat !== 'number' || typeof stop.lon !== 'number') return;
+
+    // compute percent position, but allow per-stop manual overrides (posPercent)
+    const computed = latLonToPercent(stop.lat, stop.lon);
+    const leftPct = (stop.posPercent && typeof stop.posPercent.left === 'number')
+      ? stop.posPercent.left
+      : computed.left;
+    const topPct = (stop.posPercent && typeof stop.posPercent.top === 'number')
+      ? stop.posPercent.top
+      : computed.top;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'map__pin';
+    btn.style.left = `${leftPct}%`;
+    btn.style.top = `${topPct}%`;
+    btn.dataset.stop = key;
+    btn.setAttribute('aria-label', stop.title || key);
+
+    const pulse = document.createElement('div');
+    pulse.className = 'map__pulse';
+    btn.appendChild(pulse);
+
+    const label = document.createElement('span');
+    label.className = 'map__label';
+    label.textContent = stop.title || key;
+    btn.appendChild(label);
+
+    container.appendChild(btn);
+  });
+}
 
 // ---- Render logic ----
 const $ = (sel) => document.querySelector(sel);
@@ -330,5 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   renderProjects();
+  // render pins first so setupTravelMap can bind to them
+  renderTravelPins();
   setupTravelMap();
 });
