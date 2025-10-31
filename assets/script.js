@@ -62,21 +62,37 @@ const TRAVEL_STOPS = {
     // lat, lon used to compute pin position on the equirectangular SVG map
     lat: 41.3851,
     lon: 2.1734,
-    photos: []
+    photos: [
+      { src: "photos/bcn1.png" },
+      { src: "photos/bcn2.png" },
+      { src: "photos/bcn3.png" },
+      { src: "photos/bcn4.png" },
+      { src: "photos/bcn5.png" },
+      { src: "photos/bcn6.png" },
+      { src: "photos/bcn7.png" }
+    ]
   },
   sf: {
     title: "San Francisco, California",
     blurb: "",
     lat: 37.7749,
     lon: -122.4194,
-    photos: []
+    photos: [
+      { src: "photos/sf1.png" },
+      { src: "photos/sf2.png" },
+      { src: "photos/sf3.png" }
+    ]
   },
   camas: {
     title: "Camas, Washington",
     blurb: "",
     lat: 45.5843,
     lon: -122.3991,
-    photos: []
+    photos: [
+      { src: "photos/camas1.png" },
+      { src: "photos/camas2.png" },
+      { src: "photos/camas3.png" }
+    ]
   },
   india: {
     title: "India",
@@ -84,14 +100,22 @@ const TRAVEL_STOPS = {
     // approximate center of India
     lat: 22.0,
     lon: 79.0,
-    photos: []
+    photos: [
+      { src: "photos/india1.png" },
+      { src: "photos/india2.png" },
+      { src: "photos/india3.png" }
+    ]
   },
   nyc: {
     title: "New York City, NY",
     blurb: "",
     lat: 40.7128,
     lon: -74.0060,
-    photos: []
+    photos: [
+      { src: "photos/ny1.png" },
+      { src: "photos/ny2.png" },
+      { src: "photos/ny3.png" }
+    ]
   }
 };
 
