@@ -28,6 +28,11 @@ const PROJECTS = [
   }
 ];
 
+const MAP_DIMENSIONS = {
+  width: 1000,
+  height: 520
+};
+
 const TRAVEL_STOPS = {
   austin: {
     title: "Austin, Texas",
@@ -35,8 +40,6 @@ const TRAVEL_STOPS = {
     // Austin coordinates
     lat: 30.2672,
     lon: -97.7431,
-    // manual percent override to place Austin more centrally in Texas on the map
-    posPercent: { left: 30, top: 36 },
     photos: [
       { src: "photos/austin-1.png" },
       { src: "photos/austin-2.png" }
@@ -66,8 +69,6 @@ const TRAVEL_STOPS = {
     blurb: "",
     lat: 37.7749,
     lon: -122.4194,
-    // manual percent override to nudge SF further to the west edge
-    posPercent: { left: 4, top: 34 },
     photos: []
   },
   camas: {
@@ -75,8 +76,6 @@ const TRAVEL_STOPS = {
     blurb: "",
     lat: 45.5843,
     lon: -122.3991,
-    // nudge Camas to the far west edge for visual alignment
-    posPercent: { left: 2, top: 22 },
     photos: []
   },
   india: {
@@ -100,14 +99,46 @@ const TRAVEL_STOPS = {
 function renderTravelPins() {
   const container = document.querySelector('.map__pins');
   if (!container) return;
+  const mapEl = document.querySelector('.map');
+  const imgEl = document.querySelector('.map__image');
+
+  const naturalWidth = (imgEl && imgEl.naturalWidth) || MAP_DIMENSIONS.width;
+  const naturalHeight = (imgEl && imgEl.naturalHeight) || MAP_DIMENSIONS.height;
+  const containerWidth = (mapEl && mapEl.clientWidth) || 0;
+  const containerHeight = (mapEl && mapEl.clientHeight) || 0;
+
+  let widthScale = 1;
+  let heightScale = 1;
+
+  if (naturalWidth && naturalHeight && containerWidth && containerHeight) {
+    const scale = Math.max(containerWidth / naturalWidth, containerHeight / naturalHeight);
+    const displayedWidth = naturalWidth * scale;
+    const displayedHeight = naturalHeight * scale;
+    widthScale = displayedWidth / containerWidth;
+    heightScale = displayedHeight / containerHeight;
+  }
 
   // Helper: convert lat/lon to top/left percentages for an equirectangular projection
   const latLonToPercent = (lat, lon) => {
     // longitude -180..180 -> 0..100%
-    const left = ((lon + 180) / 360) * 100;
+    const normX = (lon + 180) / 360;
     // latitude 90..-90 -> 0..100% (top to bottom)
-    const top = ((90 - lat) / 180) * 100;
-    return { left, top };
+    const normY = (90 - lat) / 180;
+    let left = normX;
+    let top = normY;
+
+    if (widthScale !== 1) {
+      left = widthScale * normX - (widthScale - 1) / 2;
+    }
+    if (heightScale !== 1) {
+      top = heightScale * normY - (heightScale - 1) / 2;
+    }
+
+    const clamp = (value) => Math.min(1, Math.max(0, value));
+    return {
+      left: clamp(left) * 100,
+      top: clamp(top) * 100
+    };
   };
 
   // Clear any existing pins
