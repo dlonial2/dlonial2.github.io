@@ -1,15 +1,16 @@
 // ---- Edit your project data here ----
 const PROJECTS = [
   {
-    title: "Early-Stage Diabetes Detection (India)",
-    desc: "ML pipeline that predicts early-stage diabetes from clinical symptom data in India. Built schema-validated data loading with automatic type handling and categorical cleanup, used a ColumnTransformer for consistent preprocessing, and trained a 200-tree Random Forest reaching ~97% accuracy and 0.999 ROC-AUC. Deployed for batch and real-time predictions, with symptom-level explanations so clinicians can understand model decisions.",
-    tech: ["Python", "scikit-learn", "Pandas", "ColumnTransformer"],
+    title: "Diabetes Risk Checker",
+    desc: "A symptom-based diabetes risk tool — answer 14 yes/no questions about how you've been feeling and get a plain-English recommendation on whether to see a doctor. Uses ethnicity-adjusted risk thresholds (South Asian, Black, Hispanic, and Indigenous populations develop diabetes at lower risk scores than European averages), SHAP-powered explanations showing which symptoms are driving the result, and a counterfactual engine that surfaces which symptoms — if addressed — would most reduce your risk. Deployed on Hugging Face Spaces.",
+    tech: ["Python", "scikit-learn", "SHAP", "Streamlit", "Docker", "Hugging Face"],
     image: "projects/diabetes_india_clinic_confusion_matrix.png",
     images: [
       "projects/diabetes_india_clinic_confusion_matrix.png",
       "projects/diabetes_india_clinic_roc_curve.png"
     ],
     links: [
+      { label: "Live demo", href: "https://huggingface.co/spaces/dlonial/diabetes-risk-docker" },
       { label: "GitHub", href: "https://github.com/dlonial2/diabetes-risk-india" }
     ]
   },
