@@ -2,7 +2,7 @@
 const PROJECTS = [
   {
     title: "Diabetes Risk Checker",
-    desc: "A symptom-based diabetes risk tool — answer 14 yes/no questions about how you've been feeling and get a plain-English recommendation on whether to see a doctor. Uses ethnicity-adjusted risk thresholds (South Asian, Black, Hispanic, and Indigenous populations develop diabetes at lower risk scores than European averages), SHAP-powered explanations showing which symptoms are driving the result, and a counterfactual engine that surfaces which symptoms — if addressed — would most reduce your risk. Deployed on Hugging Face Spaces.",
+    desc: "A symptom-based diabetes risk tool: answer 14 yes/no questions and get a plain-English recommendation on whether to see a doctor. Uses ethnicity-adjusted risk thresholds, SHAP explanations showing which symptoms drive the result, and a counterfactual engine that flags which symptoms — if addressed — would most lower your risk. Deployed on Hugging Face Spaces.",
     tech: ["Python", "scikit-learn", "SHAP", "Streamlit", "Docker", "Hugging Face"],
     image: "projects/diabetes_india_clinic_confusion_matrix.png",
     images: [
