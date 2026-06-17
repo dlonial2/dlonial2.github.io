@@ -17,8 +17,8 @@ const PROJECTS = [
   },
   {
     title: "Crypto Trading Bot",
-    desc: "Python + ccxt trading agent that blends SMA/RSI signals with lightweight ML scoring to manage positions and stream telemetry into a Flask dashboard for live tuning.",
-    tech: ["Python", "Flask", "Pandas", "ccxt"],
+    desc: "Flask app that turns live CoinGecko price data into BUY/SELL/HOLD signals using an SMA-crossover strategy, charted with Chart.js. Built around a resilient API layer — exponential backoff, Retry-After handling, and a TTL cache that serves last-good data when the rate-limited free API fails.",
+    tech: ["Python", "Flask", "Pandas", "Chart.js", "CoinGecko API"],
     image: "projects/crypto-bot1.png",
     images: [
       "projects/crypto-bot1.png",
