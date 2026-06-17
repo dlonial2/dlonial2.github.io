@@ -30,9 +30,9 @@ const PROJECTS = [
     ]
   },
   {
-    title: "Personal Shopper",
-    desc: "React + FastAPI experience that lets an LLM curate outfits from product catalogs, ranks options through user preferences, and returns shoppable looks.",
-    tech: ["React", "FastAPI", "OpenAI", "PostgreSQL"],
+    title: "Personal Shopper + GPT From Scratch",
+    desc: "A two-part project on how language-model systems work end to end. A Flask shopping assistant parses natural-language requests into structured intent (product, budget, use-case) and ranks candidates with explainable, scored tradeoffs. Paired with a GPT built from scratch in pure NumPy — hand-written, gradient-checked backprop that climbs from n-gram counting through attention up to a working transformer that generates text.",
+    tech: ["Python", "NumPy", "Transformers", "Flask"],
     image: "projects/personalshopper1.png",
     images: [
       "projects/personalshopper1.png"
