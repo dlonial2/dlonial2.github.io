@@ -2,7 +2,7 @@
 const PROJECTS = [
   {
     title: "Diabetes Risk Checker",
-    desc: "A symptom-based diabetes risk tool: answer 14 yes/no questions and get a plain-English recommendation on whether to see a doctor. Uses ethnicity-adjusted risk thresholds, SHAP explanations showing which symptoms drive the result, and a counterfactual engine that flags which symptoms — if addressed — would most lower your risk. Deployed on Hugging Face Spaces.",
+    desc: "A symptom-based diabetes risk tool with ethnicity-adjusted risk thresholds, SHAP explanations that surface which symptoms drive each prediction, and a counterfactual engine that identifies which symptoms — if addressed — would most lower risk. Deployed on Hugging Face Spaces.",
     tech: ["Python", "scikit-learn", "SHAP", "Streamlit", "Docker", "Hugging Face"],
     image: "projects/huggingface.png",
     images: [
@@ -17,7 +17,7 @@ const PROJECTS = [
   },
   {
     title: "Crypto Trading Bot",
-    desc: "Flask app that turns live CoinGecko price data into BUY/SELL/HOLD signals using an SMA-crossover strategy, charted with Chart.js. Built around a resilient API layer — exponential backoff, Retry-After handling, and a TTL cache that serves last-good data when the rate-limited free API fails.",
+    desc: "A Flask app that turns live CoinGecko price data into BUY/SELL/HOLD signals from an SMA-crossover strategy, visualized with Chart.js. Built around a resilient API layer — exponential backoff, Retry-After handling, and a TTL cache that serves last-good data when the rate-limited free API fails.",
     tech: ["Python", "Flask", "Pandas", "Chart.js", "CoinGecko API"],
     image: "projects/crypto-bot1.png",
     images: [
