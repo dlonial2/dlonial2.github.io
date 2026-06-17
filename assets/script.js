@@ -4,8 +4,9 @@ const PROJECTS = [
     title: "Diabetes Risk Checker",
     desc: "A symptom-based diabetes risk tool: answer 14 yes/no questions and get a plain-English recommendation on whether to see a doctor. Uses ethnicity-adjusted risk thresholds, SHAP explanations showing which symptoms drive the result, and a counterfactual engine that flags which symptoms — if addressed — would most lower your risk. Deployed on Hugging Face Spaces.",
     tech: ["Python", "scikit-learn", "SHAP", "Streamlit", "Docker", "Hugging Face"],
-    image: "projects/diabetes_india_clinic_confusion_matrix.png",
+    image: "projects/huggingface.png",
     images: [
+      "projects/huggingface.png",
       "projects/diabetes_india_clinic_confusion_matrix.png",
       "projects/diabetes_india_clinic_roc_curve.png"
     ],
