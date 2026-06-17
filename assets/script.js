@@ -31,7 +31,7 @@ const PROJECTS = [
   },
   {
     title: "Personal Shopper AI",
-    desc: "A personal shopping assistant powered by a mini GPT I built from scratch. The Flask app turns natural-language requests into structured intent — product, budget, use-case — and ranks candidates with explainable, scored tradeoffs. Under the hood sits a transformer written from the ground up in pure NumPy, with hand-written, gradient-checked backprop that climbs from n-gram counting through attention to real text generation.",
+    desc: "A shopping assistant powered by a mini GPT I built from scratch. A Flask app turns natural-language requests into structured intent — product, budget, use-case — and ranks candidates with explainable, scored tradeoffs. Under the hood sits a transformer written from the ground up in pure NumPy, with hand-written, gradient-checked backprop.",
     tech: ["Python", "NumPy", "Transformers", "Flask"],
     image: "projects/personalshopper1.png",
     images: [
