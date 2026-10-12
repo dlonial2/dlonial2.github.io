@@ -3,14 +3,17 @@
 }
 
 :root {
-  --bg: #f5f7fb;
-  --surface: #ffffffcc;
+  --bg: #f6f5fc;
+  --surface: #ffffffd9;
   --surface-strong: #ffffff;
-  --text: #0f172a;
-  --muted: #525f7f;
-  --accent: linear-gradient(135deg, #5c5dff, #9c5cff);
-  --accent-solid: #675cff;
-  --shadow: 0 20px 45px -24px rgba(15, 23, 42, 0.45);
+  --text: #16142b;
+  --muted: #56527a;
+  --accent: linear-gradient(135deg, #5b4ae0, #8f5cf0 55%, #b874e8);
+  --accent-solid: #5f4ae2;
+  --accent-tint: #efecfd;
+  --accent-line: #ddd7f7;
+  --shadow: 0 18px 40px -26px rgba(32, 22, 86, 0.42);
+  --shadow-lift: 0 26px 56px -30px rgba(32, 22, 86, 0.52);
 }
 
 html {
@@ -188,10 +191,22 @@ img {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr 1.1fr;
-  background: rgba(248, 250, 255, 0.9);
+  background: var(--surface-strong);
   border-radius: 20px;
   padding: 1.75rem;
-  border: 1px solid rgba(103, 92, 255, 0.18);
+  border: 1px solid var(--accent-line);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.project:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project { transition: none; }
+  .project:hover { transform: none; }
 }
 
 .project__media {
@@ -260,8 +275,10 @@ img {
 }
 
 .project__tech li {
-  background: rgba(92, 93, 255, 0.12);
+  background: var(--accent-tint);
   color: var(--accent-solid);
+  border: 1px solid var(--accent-line);
+  font-weight: 500;
 }
 
 .project__links {
@@ -593,3 +610,153 @@ body.modal-open {
   background: rgba(255, 255, 255, 0.2);
   color: inherit;
 }
+
+/* ---- project tldr ---- */
+.project__tldr {
+  margin: 0 0 0.6rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.project__desc {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---- travel gallery ---- */
+.gallery__count {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.gallery__strip {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.gallery__strip button {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  opacity: 0.55;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery__strip button:hover,
+.gallery__strip button:focus-visible { opacity: 1; }
+
+.gallery__strip button.is-active {
+  opacity: 1;
+  border-color: var(--accent-solid);
+}
+
+.gallery__strip img {
+  width: 58px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+#galleryImages img {
+  transition: opacity 0.18s ease;
+}
+
+#galleryImages img.is-swapping { opacity: 0.35; }
+
+@media (prefers-reduced-motion: reduce) {
+  #galleryImages img { transition: none; }
+  #galleryImages img.is-swapping { opacity: 1; }
+}
+
+/* keep the whole gallery (image + counter + strip) inside the viewport */
+#galleryImages {
+  display: flex;
+  justify-content: center;
+}
+
+#galleryImages img {
+  max-height: min(62vh, 620px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.gallery__content {
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+/* ---- project bullets ---- */
+.project__points {
+  margin: 0 0 1rem;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project__points li {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.project__points li::marker { color: var(--accent-solid); }
+
+/* ---- smoother scrolling ---- */
+html { scroll-behavior: smooth; }
+
+.section { scroll-margin-top: 2rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* iOS: stop rubber-band jank inside the modal, keep momentum in the page */
+body { -webkit-overflow-scrolling: touch; overscroll-behavior-y: none; }
+.gallery__content { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+
+@media (max-width: 720px) {
+  .project { grid-template-columns: 1fr; gap: 1.1rem; padding: 1.25rem; }
+  .project__points li { font-size: 0.95rem; }
+  .gallery__strip img { width: 48px; height: 36px; }
+  #galleryImages img { max-height: 54vh; }
+}
+
+/* ---- section eyebrows ---- */
+.eyebrow {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent-solid);
+  opacity: 0.85;
+}
+
+.section__head h2 { margin-top: 0; }
+
+.section__head > p:last-child {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.eyebrow--head {
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+  opacity: 1;
+  margin: 0 0 0.75rem;
+}
+
+

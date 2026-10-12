@@ -1,0 +1,5 @@
+photos/*.png
+photos/*.jpg
+!photos/web/
+!photos/thumb/
+.DS_Store
